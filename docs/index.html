@@ -3,6 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MemePi Token - The Mathematical Meme Revolution combining π principles with DeFi">
+    <meta name="keywords" content="MemePi, cryptocurrency, mathematical token, DeFi, π token, mathematical meme">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>MemePi Token - Mathematical Meme Revolution</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .token-stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #764ba2;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+        .scroll-top-btn.show {
+            opacity: 1;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #a855f7;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900 bg-opacity-90 backdrop-filter backdrop-blur-lg transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="https://gateway.pinata.cloud/ipfs/QmeTKApmA3xpAVR5YVU6tEVaw76Hc5uAcTo1Wg7bwhueF3" alt="MemePi Logo" class="h-10 w-10 mr-3">
+                    <span class="text-xl font-bold">MemePi Token</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link hover:text-purple-400">About</a>
+                    <a href="#tokenomics" class="nav-link hover:text-purple-400">Tokenomics</a>
+                    <a href="#roadmap" class="nav-link hover:text-purple-400">Roadmap</a>
+                    <a href="#community" class="nav-link hover:text-purple-400">Community</a>
+                    <a href="https://github.com/314-hash/MemePi" target="_blank" rel="noopener noreferrer" class="nav-link hover:text-purple-400">
+                        <i class="fab fa-github mr-1"></i>GitHub
+                    </a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-4 py-3 space-y-4">
+                <a href="#about" class="block hover:text-purple-400">About</a>
+                <a href="#tokenomics" class="block hover:text-purple-400">Tokenomics</a>
+                <a href="#roadmap" class="block hover:text-purple-400">Roadmap</a>
+                <a href="#community" class="block hover:text-purple-400">Community</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg min-h-screen flex items-center pt-20 relative">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">The Mathematical Meme Revolution</h1>
+                    <p class="text-xl mb-8">Join the infinite possibilities of π in the world of cryptocurrency</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full font-semibold transform hover:scale-105 transition-transform duration-200">Buy MEPI</a>
+                        <a href="#tokenomics" class="border border-white hover:border-purple-400 px-8 py-3 rounded-full font-semibold hover:bg-purple-400 hover:bg-opacity-10 transition-all duration-200">Learn More</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://gateway.pinata.cloud/ipfs/QmeTKApmA3xpAVR5YVU6tEVaw76Hc5uAcTo1Wg7bwhueF3" alt="MemePi Illustration" class="w-3/4 max-w-lg transform hover:scale-105 transition-transform duration-300">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section id="tokenomics" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center">Tokenomics</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="token-stats p-8 rounded-xl text-center">
+                    <i class="fas fa-coins text-4xl mb-4 text-purple-400"></i>
+                    <h3 class="text-2xl font-bold mb-2">Total Supply</h3>
+                    <p class="text-xl">314,159,265,359 MEPI</p>
+                </div>
+                <div class="token-stats p-8 rounded-xl text-center">
+                    <i class="fas fa-fire text-4xl mb-4 text-purple-400"></i>
+                    <h3 class="text-2xl font-bold mb-2">Burn Rate</h3>
+                    <p class="text-xl">2% per Transaction</p>
+                </div>
+                <div class="token-stats p-8 rounded-xl text-center">
+                    <i class="fas fa-bullhorn text-4xl mb-4 text-purple-400"></i>
+                    <h3 class="text-2xl font-bold mb-2">Marketing Fee</h3>
+                    <p class="text-xl">1% per Transaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center">Roadmap</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="p-6 border border-purple-500 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4">Phase 1</h3>
+                    <ul class="space-y-2">
+                        <li>✓ Token Launch</li>
+                        <li>✓ Website Launch</li>
+                        <li>• Community Building</li>
+                        <li>• Initial Marketing Push</li>
+                    </ul>
+                </div>
+                <div class="p-6 border border-purple-500 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4">Phase 2</h3>
+                    <ul class="space-y-2">
+                        <li>• CoinGecko Listing</li>
+                        <li>• CoinMarketCap Listing</li>
+                        <li>• Community Events</li>
+                        <li>• Partnerships</li>
+                    </ul>
+                </div>
+                <div class="p-6 border border-purple-500 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4">Phase 3</h3>
+                    <ul class="space-y-2">
+                        <li>• DEX Listing</li>
+                        <li>• NFT Collection</li>
+                        <li>• Staking Platform</li>
+                        <li>• Marketing Campaign</li>
+                    </ul>
+                </div>
+                <div class="p-6 border border-purple-500 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4">Phase 4</h3>
+                    <ul class="space-y-2">
+                        <li>• CEX Listings</li>
+                        <li>• MemePi DAO</li>
+                        <li>• Cross-chain Bridge</li>
+                        <li>• Global Expansion</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center">Join Our Community</h2>
+            <div class="flex justify-center space-x-8">
+                <a href="#" class="text-4xl hover:text-purple-400"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-4xl hover:text-purple-400"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="text-4xl hover:text-purple-400"><i class="fab fa-discord"></i></a>
+                <a href="#" class="text-4xl hover:text-purple-400"><i class="fab fa-reddit"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="https://gateway.pinata.cloud/ipfs/QmeTKApmA3xpAVR5YVU6tEVaw76Hc5uAcTo1Wg7bwhueF3" alt="MemePi Logo" class="h-10 w-10">
+                </div>
+                <div class="text-center md:text-right">
+                    <p>&copy; 2024 MemePi Token. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observeElements = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('section:not(.gradient-bg)').forEach(section => {
+                section.classList.add('fade-in');
+                observer.observe(section);
+            });
+        };
+
+        // Scroll to top button
+        const createScrollTopButton = () => {
+            const button = document.createElement('button');
+            button.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            button.className = 'scroll-top-btn';
+            document.body.appendChild(button);
+
+            window.addEventListener('scroll', () => {
+                button.classList.toggle('show', window.scrollY > 300);
+            });
+
+            button.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            observeElements();
+            createScrollTopButton();
+        });
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemePi Token - Mathematical Meme Token</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
