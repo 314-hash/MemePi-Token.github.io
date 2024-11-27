@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemePi Token - Mathematical Meme Token</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-pi"></i> MemePi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tokenomics">Tokenomics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#visualizations">Visualizations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#documentation">Documentation</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container text-center">
+            <h1><i class="fas fa-pi"></i> MemePi Token</h1>
+            <p class="lead">The First Mathematical Meme Token</p>
+            <div class="hero-buttons">
+                <a href="#tokenomics" class="btn btn-primary btn-lg">Learn More</a>
+                <a href="https://github.com/314-hash/MemePi" class="btn btn-outline-light btn-lg">GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About MemePi</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>MemePi is a revolutionary cryptocurrency that combines mathematical principles with meme culture. Built on the Ethereum blockchain, it features:</p>
+                    <ul>
+                        <li>π-based initial supply: 314,159,265,359 tokens</li>
+                        <li>Mathematical burn mechanism</li>
+                        <li>Time-weighted governance</li>
+                        <li>Anti-bot protection</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-box">
+                        <i class="fas fa-calculator feature-icon"></i>
+                        <h3>Mathematical Foundation</h3>
+                        <p>Every aspect of MemePi is based on mathematical principles, creating a unique and educational cryptocurrency experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tokenomics" class="section bg-light">
+        <div class="container">
+            <h2>Tokenomics</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="tokenomics-card">
+                        <i class="fas fa-coins"></i>
+                        <h3>Supply</h3>
+                        <p>Initial: π × 10¹¹</p>
+                        <p>Burn Rate: 2%</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="tokenomics-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Price Impact</h3>
+                        <p>Maximum: π/2</p>
+                        <p>Arctangent-based</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="tokenomics-card">
+                        <i class="fas fa-vote-yea"></i>
+                        <h3>Governance</h3>
+                        <p>Time-weighted</p>
+                        <p>√(time/π) bonus</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="tokenomics-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Protection</h3>
+                        <p>π × 100s cooldown</p>
+                        <p>Rate-limited tx</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visualizations" class="section">
+        <div class="container">
+            <h2>Mathematical Visualizations</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="visualization-card">
+                        <h3>Supply Dynamics</h3>
+                        <img src="visualizations/supply_snapshot_500_annotated.png" alt="Supply Dynamics" class="img-fluid">
+                        <p>S(t) = S₀ × (1-b)^n(t)</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="visualization-card">
+                        <h3>Price Impact Model</h3>
+                        <img src="visualizations/price_impact_2_annotated.png" alt="Price Impact" class="img-fluid">
+                        <p>I(v) = (π/2) × arctan(v/L)</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="visualization-card">
+                        <h3>Governance Weight</h3>
+                        <img src="visualizations/governance_weight_180_annotated.png" alt="Governance Weight" class="img-fluid">
+                        <p>VP(a,t) = Balance(a) × √(HoldingTime(a)/π)</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="visualization-card">
+                        <h3>Transaction Rate Limits</h3>
+                        <img src="visualizations/transaction_rate_12_annotated.png" alt="Transaction Rate" class="img-fluid">
+                        <p>Rate = 1/(π×100) tx/s</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="documentation" class="section bg-light">
+        <div class="container">
+            <h2>Documentation</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="doc-card">
+                        <h3>Technical Details</h3>
+                        <ul>
+                            <li><a href="https://github.com/314-hash/MemePi/blob/main/docs/visualizations/README.md">Visualization Guide</a></li>
+                            <li><a href="https://github.com/314-hash/MemePi">Source Code</a></li>
+                            <li><a href="https://github.com/314-hash/MemePi/issues">Issue Tracker</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="doc-card">
+                        <h3>Mathematical Proofs</h3>
+                        <ul>
+                            <li>Supply Dynamics</li>
+                            <li>Price Impact</li>
+                            <li>Governance Model</li>
+                            <li>Transaction Limits</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="doc-card">
+                        <h3>Community</h3>
+                        <ul>
+                            <li><a href="https://twitter.com/MemePiToken">Twitter</a></li>
+                            <li><a href="https://t.me/MemePiToken">Telegram</a></li>
+                            <li><a href="https://discord.gg/MemePi">Discord</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer bg-dark text-light">
+        <div class="container text-center">
+            <p>© 2024 MemePi Token. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/314-hash/MemePi"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/MemePiToken"><i class="fab fa-twitter"></i></a>
+                <a href="https://t.me/MemePiToken"><i class="fab fa-telegram"></i></a>
+                <a href="https://discord.gg/MemePi"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
