@@ -3,207 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MemePi Token - Mathematical Meme Token</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="description" content="MemePi Token - The Mathematical Meme Revolution combining π principles with DeFi">
+    <meta name="keywords" content="MemePi, cryptocurrency, mathematical token, DeFi, π token, mathematical meme">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>MemePi Token - Mathematical Meme Revolution</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="script.js" defer></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .token-stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #764ba2;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+        .scroll-top-btn.show {
+            opacity: 1;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #a855f7;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-pi"></i> MemePi</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/" aria-current="page">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://314-hash.github.io/MemePi/" target="_blank">GitHub Pages <i class="fas fa-external-link-alt"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tokenomics">Tokenomics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#visualizations">Visualizations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#community">Community</a>
-                    </li>
-                </ul>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900 bg-opacity-90 backdrop-filter backdrop-blur-lg transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="https://gateway.pinata.cloud/ipfs/QmeTKApmA3xpAVR5YVU6tEVaw76Hc5uAcTo1Wg7bwhueF3" alt="MemePi Logo" class="h-10 w-10 mr-3">
+                    <span class="text-xl font-bold">MemePi Token</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link hover:text-purple-400">About</a>
+                    <a href="#tokenomics" class="nav-link hover:text-purple-400">Tokenomics</a>
+                    <a href="#roadmap" class="nav-link hover:text-purple-400">Roadmap</a>
+                    <a href="#community" class="nav-link hover:text-purple-400">Community</a>
+                    <a href="https://github.com/314-hash/MemePi" target="_blank" rel="noopener noreferrer" class="nav-link hover:text-purple-400">
+                        <i class="fab fa-github mr-1"></i>GitHub
+                    </a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-4 py-3 space-y-4">
+                <a href="#about" class="block hover:text-purple-400">About</a>
+                <a href="#tokenomics" class="block hover:text-purple-400">Tokenomics</a>
+                <a href="#roadmap" class="block hover:text-purple-400">Roadmap</a>
+                <a href="#community" class="block hover:text-purple-400">Community</a>
             </div>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="container text-center">
-            <h1><i class="fas fa-pi"></i> MemePi Token</h1>
-            <p class="lead">The First Mathematical Meme Token</p>
-            <div class="hero-buttons">
-                <a href="#tokenomics" class="btn btn-primary btn-lg">Learn More</a>
-                <a href="https://github.com/314-hash/MemePi" class="btn btn-outline-light btn-lg">GitHub</a>
+    <!-- Hero Section -->
+    <section class="gradient-bg min-h-screen flex items-center pt-20 relative">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">The Mathematical Meme Revolution</h1>
+                    <p class="text-xl mb-8">Join the infinite possibilities of π in the world of cryptocurrency</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full font-semibold transform hover:scale-105 transition-transform duration-200">Buy MEPI</a>
+                        <a href="#tokenomics" class="border border-white hover:border-purple-400 px-8 py-3 rounded-full font-semibold hover:bg-purple-400 hover:bg-opacity-10 transition-all duration-200">Learn More</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://gateway.pinata.cloud/ipfs/QmeTKApmA3xpAVR5YVU6tEVaw76Hc5uAcTo1Wg7bwhueF3" alt="MemePi Illustration" class="w-3/4 max-w-lg transform hover:scale-105 transition-transform duration-300">
+                </div>
             </div>
         </div>
-    </header>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
 
-    <section id="about" class="section">
-        <div class="container">
-            <h2>About MemePi</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>MemePi is a revolutionary cryptocurrency that combines mathematical principles with meme culture. Built on the Ethereum blockchain, it features:</p>
-                    <ul>
-                        <li>π-based initial supply: 314,159,265,359 tokens</li>
-                        <li>Mathematical burn mechanism</li>
-                        <li>Time-weighted governance</li>
-                        <li>Anti-bot protection</li>
+    <!-- Tokenomics Section -->
+    <section id="tokenomics" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center">Tokenomics</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="token-stats p-8 rounded-xl text-center">
+                    <i class="fas fa-coins text-4xl mb-4 text-purple-400"></i>
+                    <h3 class="text-2xl font-bold mb-2">Total Supply</h3>
+                    <p class="text-xl">314,159,265,359 MEPI</p>
+                </div>
+                <div class="token-stats p-8 rounded-xl text-center">
+                    <i class="fas fa-fire text-4xl mb-4 text-purple-400"></i>
+                    <h3 class="text-2xl font-bold mb-2">Burn Rate</h3>
+                    <p class="text-xl">2% per Transaction</p>
+                </div>
+                <div class="token-stats p-8 rounded-xl text-center">
+                    <i class="fas fa-bullhorn text-4xl mb-4 text-purple-400"></i>
+                    <h3 class="text-2xl font-bold mb-2">Marketing Fee</h3>
+                    <p class="text-xl">1% per Transaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center">Roadmap</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="p-6 border border-purple-500 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4">Phase 1</h3>
+                    <ul class="space-y-2">
+                        <li>✓ Token Launch</li>
+                        <li>✓ Website Launch</li>
+                        <li>• Community Building</li>
+                        <li>• Initial Marketing Push</li>
                     </ul>
                 </div>
-                <div class="col-md-6">
-                    <div class="feature-box">
-                        <i class="fas fa-calculator feature-icon"></i>
-                        <h3>Mathematical Foundation</h3>
-                        <p>Every aspect of MemePi is based on mathematical principles, creating a unique and educational cryptocurrency experience.</p>
-                    </div>
+                <div class="p-6 border border-purple-500 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4">Phase 2</h3>
+                    <ul class="space-y-2">
+                        <li>• CoinGecko Listing</li>
+                        <li>• CoinMarketCap Listing</li>
+                        <li>• Community Events</li>
+                        <li>• Partnerships</li>
+                    </ul>
+                </div>
+                <div class="p-6 border border-purple-500 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4">Phase 3</h3>
+                    <ul class="space-y-2">
+                        <li>• DEX Listing</li>
+                        <li>• NFT Collection</li>
+                        <li>• Staking Platform</li>
+                        <li>• Marketing Campaign</li>
+                    </ul>
+                </div>
+                <div class="p-6 border border-purple-500 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4">Phase 4</h3>
+                    <ul class="space-y-2">
+                        <li>• CEX Listings</li>
+                        <li>• MemePi DAO</li>
+                        <li>• Cross-chain Bridge</li>
+                        <li>• Global Expansion</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="tokenomics" class="section bg-light">
-        <div class="container">
-            <h2>Tokenomics</h2>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="tokenomics-card">
-                        <i class="fas fa-coins"></i>
-                        <h3>Supply</h3>
-                        <p>Initial: π × 10¹¹</p>
-                        <p>Burn Rate: 2%</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="tokenomics-card">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Price Impact</h3>
-                        <p>Maximum: π/2</p>
-                        <p>Arctangent-based</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="tokenomics-card">
-                        <i class="fas fa-vote-yea"></i>
-                        <h3>Governance</h3>
-                        <p>Time-weighted</p>
-                        <p>√(time/π) bonus</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="tokenomics-card">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3>Protection</h3>
-                        <p>π × 100s cooldown</p>
-                        <p>Rate-limited tx</p>
-                    </div>
-                </div>
+    <!-- Community Section -->
+    <section id="community" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center">Join Our Community</h2>
+            <div class="flex justify-center space-x-8">
+                <a href="#" class="text-4xl hover:text-purple-400"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-4xl hover:text-purple-400"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="text-4xl hover:text-purple-400"><i class="fab fa-discord"></i></a>
+                <a href="#" class="text-4xl hover:text-purple-400"><i class="fab fa-reddit"></i></a>
             </div>
         </div>
     </section>
 
-    <section id="visualizations" class="section">
-        <div class="container">
-            <h2>Mathematical Visualizations</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="visualization-card">
-                        <h3>Supply Dynamics</h3>
-                        <img src="visualizations/supply_snapshot_500_annotated.png" alt="Supply Dynamics" class="img-fluid">
-                        <p>S(t) = S₀ × (1-b)^n(t)</p>
-                    </div>
+    <!-- Footer -->
+    <footer class="py-10 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img src="https://gateway.pinata.cloud/ipfs/QmeTKApmA3xpAVR5YVU6tEVaw76Hc5uAcTo1Wg7bwhueF3" alt="MemePi Logo" class="h-10 w-10">
                 </div>
-                <div class="col-md-6">
-                    <div class="visualization-card">
-                        <h3>Price Impact Model</h3>
-                        <img src="visualizations/price_impact_2_annotated.png" alt="Price Impact" class="img-fluid">
-                        <p>I(v) = (π/2) × arctan(v/L)</p>
-                    </div>
+                <div class="text-center md:text-right">
+                    <p>&copy; 2024 MemePi Token. All rights reserved.</p>
                 </div>
-                <div class="col-md-6">
-                    <div class="visualization-card">
-                        <h3>Governance Weight</h3>
-                        <img src="visualizations/governance_weight_180_annotated.png" alt="Governance Weight" class="img-fluid">
-                        <p>VP(a,t) = Balance(a) × √(HoldingTime(a)/π)</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="visualization-card">
-                        <h3>Transaction Rate Limits</h3>
-                        <img src="visualizations/transaction_rate_12_annotated.png" alt="Transaction Rate" class="img-fluid">
-                        <p>Rate = 1/(π×100) tx/s</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="community" class="section bg-light">
-        <div class="container">
-            <h2>Community</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="doc-card">
-                        <h3>Technical Details</h3>
-                        <ul>
-                            <li><a href="https://github.com/314-hash/MemePi/blob/main/docs/visualizations/README.md">Visualization Guide</a></li>
-                            <li><a href="https://github.com/314-hash/MemePi">Source Code</a></li>
-                            <li><a href="https://github.com/314-hash/MemePi/issues">Issue Tracker</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="doc-card">
-                        <h3>Mathematical Proofs</h3>
-                        <ul>
-                            <li>Supply Dynamics</li>
-                            <li>Price Impact</li>
-                            <li>Governance Model</li>
-                            <li>Transaction Limits</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="doc-card">
-                        <h3>Community</h3>
-                        <ul>
-                            <li><a href="https://twitter.com/MemePiToken">Twitter</a></li>
-                            <li><a href="https://t.me/MemePiToken">Telegram</a></li>
-                            <li><a href="https://discord.gg/MemePi">Discord</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer bg-dark text-light">
-        <div class="container text-center">
-            <p> 2024 MemePi Token. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/314-hash/MemePi"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/MemePiToken"><i class="fab fa-twitter"></i></a>
-                <a href="https://t.me/MemePiToken"><i class="fab fa-telegram"></i></a>
-                <a href="https://discord.gg/MemePi"><i class="fab fa-discord"></i></a>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observeElements = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('section:not(.gradient-bg)').forEach(section => {
+                section.classList.add('fade-in');
+                observer.observe(section);
+            });
+        };
+
+        // Scroll to top button
+        const createScrollTopButton = () => {
+            const button = document.createElement('button');
+            button.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            button.className = 'scroll-top-btn';
+            document.body.appendChild(button);
+
+            window.addEventListener('scroll', () => {
+                button.classList.toggle('show', window.scrollY > 300);
+            });
+
+            button.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            observeElements();
+            createScrollTopButton();
+        });
+    </script>
 </body>
 </html>
