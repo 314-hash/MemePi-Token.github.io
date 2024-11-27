@@ -8,12 +8,12 @@ const PORT = process.env.PORT || 3000;
 // Enable CORS for all routes
 app.use(cors());
 
-// Serve static files from the website directory
-app.use(express.static(path.join(__dirname, '../PiSphere-Project/tests/contracts/website')));
+// Serve static files from the docs directory
+app.use(express.static(path.join(__dirname, 'docs')));
 
 // Serve index.html for the root path
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../PiSphere-Project/tests/contracts/website/index.html'));
+    res.sendFile(path.join(__dirname, 'docs', 'index.html'));
 });
 
 // API routes can be added here
@@ -28,7 +28,7 @@ app.get('/api/tokenomics', (req, res) => {
 
 // Handle all other routes by serving index.html (for SPA)
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../PiSphere-Project/tests/contracts/website/index.html'));
+    res.sendFile(path.join(__dirname, 'docs', 'index.html'));
 });
 
 // Start the server
