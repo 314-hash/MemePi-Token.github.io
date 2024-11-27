@@ -1,106 +1,134 @@
 # MemePi Tokenomics Visualizations
 
-This directory contains visual representations of MemePi's mathematical relationships and tokenomics models. Each visualization is generated using Python with matplotlib and saved as an SVG file for high quality rendering.
+This directory contains visual representations of MemePi's mathematical relationships and tokenomics models, including both static and annotated versions with detailed mathematical formulas.
 
 ## Installation
 ```bash
 pip install numpy matplotlib
 ```
 
-## Generated Visualizations
+## Visualization Types
 
-### 1. Supply Dynamics (supply_dynamics.svg)
-- Shows how the total token supply decreases over time due to the 2% burn rate
-- X-axis: Number of transactions (in thousands)
-- Y-axis: Total token supply (in billions)
-- Demonstrates the asymptotic approach to zero supply
+### 1. Static Visualizations
+Generate basic visualizations without annotations:
+```bash
+python static_visualizer.py
+```
 
-### 2. Price Impact Model (price_impact.svg)
-- Visualizes how transaction size affects price impact
-- X-axis: Transaction volume relative to liquidity pool size
-- Y-axis: Price impact (bounded by π/2)
-- Shows the non-linear relationship using arctangent function
+### 2. Annotated Visualizations
+Generate visualizations with mathematical formulas and explanations:
+```bash
+python annotated_visualizer.py
+```
 
-### 3. Governance Weight (governance_weight.svg)
-- Illustrates voting power based on balance and holding time
-- X-axis: Token balance
-- Y-axis: Voting power
-- Multiple lines show different holding periods (30, 90, 180, 365 days)
-- Demonstrates square root relationship with holding time
-
-### 4. Burn Distribution (burn_distribution.svg)
-- Stacked area chart showing remaining supply vs burned tokens
-- X-axis: Number of transactions (in thousands)
-- Y-axis: Token amount (in billions)
-- Visualizes the gradual transition from circulating to burned supply
-
-### 5. Transaction Rate Limits (transaction_rate.svg)
-- Shows the maximum allowed transactions over time
-- X-axis: Time (hours)
-- Y-axis: Cumulative transactions allowed
-- Demonstrates the π-based rate limiting mechanism
-
-## Animated Visualizations
-
-### 1. Supply and Burn Animation (supply_burn_animation.gif)
-- Dynamic visualization of token supply reduction
-- Real-time burn rate effects
-- Split-view showing:
-  - Supply curve over time
-  - Burn distribution changes
-
-### 2. Price Impact Animation (price_impact_animation.gif)
-- Moving point showing transaction size effects
-- Real-time price impact calculation
-- Visual demonstration of π/2 boundary
-- Smooth transition through volume ranges
-
-### 3. Governance Weight Animation (governance_weight_animation.gif)
-- Dynamic holding time progression
-- Real-time voting power calculation
-- Visual representation of time-weighted bonuses
-- Year-long holding period demonstration
-
-### 4. Transaction Rate Animation (transaction_rate_animation.gif)
-- 24-hour cycle visualization
-- Real-time transaction limit updates
-- Dynamic rate limiting demonstration
-- Visual anti-bot protection
-
-## Animation Generation
-Generate all animations using:
+### 3. Animated Visualizations (Experimental)
+Generate animated versions of the visualizations:
 ```bash
 python tokenomics_animator.py
 ```
 
-Note: Animation generation may take a few minutes due to the high-quality output and number of frames.
+## Mathematical Components Visualized
 
-## Key Mathematical Properties Illustrated
+### 1. Supply Dynamics
+- **Formula**: S(t) = S₀ × (1-b)^n(t)
+- **Variables**:
+  - S₀ = π × 10¹¹ (initial supply)
+  - b = 0.02 (burn rate)
+  - n(t) = transaction count
+- **Files**: 
+  - `supply_snapshot_*.png`: Static snapshots
+  - `supply_snapshot_*_annotated.png`: With mathematical annotations
 
-1. **Supply Reduction**
-   - Exponential decay pattern
-   - Never reaches zero (asymptotic)
-   - Predictable burn rate
+### 2. Price Impact Model
+- **Formula**: I(v) = (π/2) × arctan(v/L)
+- **Properties**:
+  - Maximum impact: π/2
+  - v: Transaction volume
+  - L: Liquidity pool size
+- **Files**:
+  - `price_impact_*.png`: Static snapshots
+  - `price_impact_*_annotated.png`: With mathematical annotations
 
-2. **Price Protection**
-   - Bounded impact (maximum π/2)
-   - Non-linear scaling
-   - Natural resistance to large trades
+### 3. Governance Weight
+- **Formula**: VP(a,t) = Balance(a) × √(HoldingTime(a)/π)
+- **Properties**:
+  - Linear with balance
+  - Square root of holding time
+  - π-normalized time factor
+- **Files**:
+  - `governance_weight_*.png`: Static snapshots
+  - `governance_weight_*_annotated.png`: With mathematical annotations
 
-3. **Governance Fairness**
-   - Balance-weighted voting
-   - Time-weighted bonus
-   - Square root scaling for holding time
+### 4. Transaction Rate Limits
+- **Formulas**:
+  - Rate = 1/(π×100) tx/s
+  - Cooldown = π×100 seconds
+  - Daily Maximum = 86400/(π×100) ≈ 275 tx
+- **Files**:
+  - `transaction_rate_*.png`: Static snapshots
+  - `transaction_rate_*_annotated.png`: With mathematical annotations
 
-4. **Anti-Bot Measures**
-   - Clear transaction rate limits
-   - π-based cooldown periods
-   - Predictable daily maximums
+## File Organization
 
-## Usage
-Run the Python script to generate all visualizations:
-```bash
-python tokenomics_visualizer.py
+```
+visualizations/
+├── static_visualizer.py         # Basic visualization generator
+├── annotated_visualizer.py      # Generator with mathematical annotations
+├── tokenomics_animator.py       # Animated visualization generator
+├── *.png                        # Static snapshots
+├── *_annotated.png             # Snapshots with mathematical formulas
+└── *.svg                        # Vector graphics versions
 ```
 
-The script will create SVG files in the same directory, which can be used in documentation, presentations, or the website.
+## Usage Instructions
+
+1. **Generate Basic Visualizations**:
+   ```bash
+   python static_visualizer.py
+   ```
+   This creates basic PNG snapshots of all tokenomics components.
+
+2. **Generate Annotated Visualizations**:
+   ```bash
+   python annotated_visualizer.py
+   ```
+   This creates enhanced versions with mathematical formulas and explanations.
+
+3. **Generate Animations** (if supported):
+   ```bash
+   python tokenomics_animator.py
+   ```
+   This attempts to create animated GIFs of the tokenomics in action.
+
+## Mathematical Properties
+
+1. **Supply Dynamics**:
+   - Exponential decay pattern
+   - Asymptotic approach to zero
+   - π-based initial supply
+
+2. **Price Impact**:
+   - π/2 bounded maximum
+   - Arctangent scaling
+   - Liquidity-sensitive
+
+3. **Governance**:
+   - Time-weighted voting power
+   - Square root holding bonus
+   - π-normalized weights
+
+4. **Transaction Limits**:
+   - π-based rate limiting
+   - Predictable cooldowns
+   - Anti-bot protection
+
+## Requirements
+- Python 3.x
+- NumPy
+- Matplotlib
+
+## Notes
+- High-resolution PNG files are provided for easy viewing
+- SVG files are available for vector graphics
+- Annotated versions include LaTeX-formatted mathematical formulas
+- Animation generation may be hardware-intensive
