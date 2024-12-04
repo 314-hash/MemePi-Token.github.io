@@ -115,12 +115,14 @@
             new Chart(supplyCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Circulating Supply', 'Burned Tokens'],
+                    labels: ['Community (40%)', 'Team - 15% Locked (20%)', 'Investors (20%)', 'Ecosystem (20%)'],
                     datasets: [{
-                        data: [95, 5],
+                        data: [40, 20, 20, 20],
                         backgroundColor: [
-                            'rgba(147, 51, 234, 0.8)', // purple
-                            'rgba(239, 68, 68, 0.8)'   // red
+                            'rgba(59, 130, 246, 0.8)',  // blue for community
+                            'rgba(239, 68, 68, 0.8)',    // red for team
+                            'rgba(16, 185, 129, 0.8)',  // green for investors
+                            'rgba(147, 51, 234, 0.8)'  // purple for ecosystem
                         ],
                         borderColor: 'rgba(17, 24, 39, 1)',
                         borderWidth: 2
