@@ -1,0 +1,16 @@
+# Node
+node_modules
+.env
+npm-debug.log
+yarn-error.log
+
+# Hardhat
+artifacts/
+cache/
+coverage/
+coverage.json
+typechain-types/
+
+# Editor
+.vscode/
+.idea/
