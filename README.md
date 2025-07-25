@@ -5,7 +5,7 @@ The next-gen meme token built for the Optimism L2 chain — 100% transparent, li
 ## 📜 Contract Info
 
 - **Name:** MemePi
-- **Symbol:** $MemePi
+- **Symbol:** $MEPI
 - **Decimals:** 18
 - **Total Supply:** 314,129,265 10**18 $MemePi
 - **Chain:** Optimism
