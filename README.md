@@ -36,3 +36,6 @@ Ready to Dive Deeper?
 Explore Our Code: Transparency is key. Find the source code for our smart contracts on our dedicated GitHub repository: [Link to your NEW MemePi-Protocol-Contracts GitHub Repo when it’s created] (Replace the placeholder link with the actual URL once you set it up!)
 See Our Token Listing: Check out our official listing on the Optimism Superchain Token List (once approved): https://github.com/ethereum-optimism/superchain-tokenlist/pull/1
 Connect with Our Community: Join the conversation and stay updated on our latest developments:
+
+Get MEMEPI: Discover how to acquire MemePi tokens and join our growing holder base. (You might add a link here to Uniswap once your liquidity pool is live, e.g., [Link to Uniswap MEMEPI/ETH Pool])
+Thank you for your interest in MemePi. We look forward to building the future of decentralized memes with you!
